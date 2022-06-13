@@ -1,0 +1,54 @@
+@use '../global/mixin/' as *;
+
+// マージン
+// ブレークポイント(s,ss)＋m＋方向(a,t,r,b,l)＋数字(0~100)＋単位(p,em,なし=rem)
+// 例) .ssmt10p -> スマホ時マージン上10％
+@use 'sass:math';
+
+//クラス名の接頭辞
+$classPrefix: 'm';
+
+$classInfo: (
+  //クラス名の修飾子、プロパティの接尾辞
+  'a': '',
+  't': '-top',
+  'r': '-right',
+  'b': '-bottom',
+  'l': '-left'
+);
+
+$unitInfo: (
+  //クラス名の接尾辞、プロパティの単位
+  '': 'rem',
+  'p': '%',
+  'em': 'em'
+);
+
+@mixin main($breakpoint: '') {
+  @each $classModifier, $propertySuffix in $classInfo {
+    @each $classSuffix, $unitName in $unitInfo {
+      $rate: 1;
+      @if ($unitName == 'rem') {
+        $rate: 10;
+      }
+      @for $i from 0 through 100 {
+        .#{$breakpoint}#{$classPrefix}#{$classModifier}#{$i}#{$classSuffix} {
+          margin#{$propertySuffix}: #{math.div($i, $rate)}#{$unitName};
+        }
+      }
+    }
+    .#{$breakpoint}#{$classPrefix}#{$classModifier}auto {
+      margin#{$propertySuffix}: auto;
+    }
+  }
+}
+
+@include main();
+
+@include tablet {
+  @include main('s');
+}
+
+@include sumaho {
+  @include main('ss');
+}

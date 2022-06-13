@@ -1,0 +1,3 @@
+common/js/build.js
+src/js/lib/**/*.js
+src/not-npm/**/*.js

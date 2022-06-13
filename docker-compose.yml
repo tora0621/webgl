@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+      - ${IP:-127.0.0.1}:3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+    volumes:
+      - mysql:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h ${IP:-127.0.0.1} -u $$MYSQL_DATABASE --password=$$MYSQL_ROOT_PASSWORD
+      interval: 10s
+  wordpress:
+    build: ./.docker/wordpress
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - ${IP:-127.0.0.1}:8080:80
+    environment:
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_SITEURL', 'http://' . $$_SERVER['HTTP_HOST'] . '/wp/');
+        define('WP_HOME', 'http://' . $$_SERVER['HTTP_HOST'] . '/');
+        define('AUTOSAVE_INTERVAL', 300);
+    volumes:
+      - ./.docker/wordpress/php.ini:/usr/local/etc/php/php.ini
+      - ./:/var/www/html
+      - wordpress:/var/www/html/wp
+      - ./wp/wp-content/themes/sample:/var/www/html/wp/wp-content/themes/sample
+    working_dir: /var/www/html/wp
+    command: apache2-start.sh
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - ${IP:-127.0.0.1}:1025:1025
+      - ${IP:-127.0.0.1}:8025:8025
+volumes:
+  wordpress: {}
+  mysql: {}

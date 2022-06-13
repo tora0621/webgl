@@ -1,0 +1,27 @@
+// テーブル用
+
+// th,td要素の子セレクタ
+$_th: '> tr > th, > thead > tr > th, > tbody > tr > th';
+$_td: '> tr > td, > thead > tr > td, > tbody > tr > td';
+
+// th要素へのスタイル適用
+@mixin th() {
+  #{$_th} {
+    @content;
+  }
+}
+
+// td要素へのスタイル適用
+@mixin td() {
+  #{$_td} {
+    @content;
+  }
+}
+
+// th,td要素へのスタイル適用
+@mixin thtd() {
+  #{$_th},
+  #{$_td} {
+    @content;
+  }
+}

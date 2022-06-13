@@ -1,0 +1,12 @@
+// クリアフィックス
+//
+// 参考)
+// https://mdbootstrap.com/docs/standard/utilities/clearfix/
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+}

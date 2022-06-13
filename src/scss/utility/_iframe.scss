@@ -1,0 +1,48 @@
+@use '../global/mixin/' as *;
+
+// インナーフレーム
+
+%responsive {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+%responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.googlemap {
+  @extend %responsive;
+  padding-bottom: 56.25%;
+  > iframe {
+    @extend %responsive-iframe;
+  }
+  //スマホ時に正方形表示、画面スワイプ用に左右余白追加
+  @include sumaho {
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 90%;
+    padding-top: 0;
+  }
+}
+
+.youtube {
+  @extend %responsive;
+  padding-bottom: 56.25%;
+  > iframe {
+    @extend %responsive-iframe;
+  }
+}
+
+.flickr {
+  @extend %responsive;
+  padding-bottom: 71%;
+  > iframe {
+    @extend %responsive-iframe;
+  }
+}

@@ -1,0 +1,100 @@
+@use '../global/mixin/' as *;
+
+.none {
+  display: none !important;
+}
+
+.block {
+  display: block !important;
+}
+
+.inline {
+  display: inline !important;
+  &-block {
+    display: inline-block !important;
+  }
+}
+
+.table {
+  display: table !important;
+}
+
+.cell {
+  display: table-cell !important;
+}
+
+.flex {
+  display: flex !important;
+  align-items: center;
+  &.-column {
+    flex-direction: column !important;
+  }
+  &.-center {
+    justify-content: center;
+  }
+  &.-wrap {
+    flex-wrap: wrap;
+  }
+}
+
+.hide {
+  visibility: hidden !important;
+}
+
+.show {
+  visibility: visible !important;
+}
+
+// ノートで表示
+.note {
+  display: none !important;
+  @include note {
+    display: inherit !important;
+  }
+  @include tablet {
+    display: none !important;
+  }
+  @include sumaho {
+    display: none !important;
+  }
+}
+
+// ノートで非表示
+.nonote {
+  @include note {
+    display: none !important;
+  }
+}
+
+//タブレットで表示
+.tablet {
+  display: none !important;
+  @include tablet {
+    display: inherit !important;
+  }
+  @include sumaho {
+    display: none !important;
+  }
+}
+
+//タブレットで非表示
+.notablet {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+//スマホで表示
+.sumaho {
+  display: none !important;
+  @include sumaho {
+    display: inherit !important;
+  }
+}
+
+//スマホで非表示
+.nosumaho {
+  @include sumaho {
+    display: none !important;
+  }
+}

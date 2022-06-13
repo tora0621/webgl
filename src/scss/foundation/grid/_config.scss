@@ -1,0 +1,23 @@
+// グリッド生成用設定ファイル
+//
+// gridName グリッド親要素に設定するセレクタ名
+// contents コンテンツ幅
+// margin グリッド間の余白
+
+$gridList: (
+  (
+    gridName: '.grid2',
+    contents: 1240,
+    margin: 40,
+  ),
+  (
+    gridName: '.grid',
+    contents: 1240,
+    margin: 20,
+  ),
+  (
+    gridName: '.grid0',
+    contents: 1,
+    margin: 0,
+  )
+);

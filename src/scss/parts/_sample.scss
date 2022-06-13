@@ -1,0 +1,243 @@
+// サンプル
+// このscssファイルは汎用クラスやJavaScript等の表示用サンプルページ用になります。
+// scssファイルでは1行目にファイルの目的や用途を記載してください。
+// 2行目以降に必要に応じて説明を記載してください。
+// 当ファイル及び_parts/sample.htmlファイルは、ベースコーディング完了時に削除してください。
+
+// この@useルールで汎用的なミックスインをロードできます。
+@use '../global/' as *;
+
+$colors: #e60012, #f39800, #dfd000, #009944, #0068b7, #1d2088, #920783;
+
+:root {
+  --variables-test: #f00;
+  --variables-test-not-use: #00f;
+}
+
+@keyframes keyframes-test {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes keyframes-test-not-use {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@font-face {
+  font-family: 'font-face-test', sans-serif;
+  src: url();
+}
+
+@font-face {
+  font-family: 'font-face-test-not-use', sans-serif;
+  src: url();
+}
+
+.use-css-test {
+  background-color: var(--variables-test) !important;
+  animation: keyframes-test;
+  font-family: 'font-face-test', sans-serif;
+}
+
+.sample {
+  line-height: 1.8;
+  @include sumaho {
+    font-size: 1.4rem;
+    p {
+      margin-bottom: 0.5em;
+    }
+  }
+  var {
+    word-break: break-all;
+    color: #162951;
+    &.block {
+      display: block;
+      margin-bottom: 0.5em;
+    }
+  }
+  code {
+    background-color: #eee;
+    padding: 0 0.2em;
+    border-radius: 0.4rem;
+    &.in {
+      font-size: 80%;
+      padding: 0;
+      &::before {
+        content: '(';
+      }
+      &::after {
+        content: ')';
+      }
+    }
+    &.block {
+      display: block;
+      padding: 1em;
+      margin-bottom: 1em;
+      > .block:nth-child(n + 2) {
+        margin-top: 1.5em;
+      }
+      > .syntax {
+        font-size: 3rem;
+        display: inline-block;
+        padding-bottom: 0.5rem;
+        @include sumaho {
+          font-size: 2rem;
+          line-height: 2;
+        }
+        &.ja {
+          font-size: 2rem;
+          @include sumaho {
+            font-size: 1.6rem;
+          }
+        }
+        > u {
+          text-decoration: none;
+          border-bottom-style: solid;
+          border-bottom-width: 5px;
+          margin: 0 0.1em;
+          > small {
+            opacity: 0.5;
+          }
+          @each $c in $colors {
+            $i: index($colors, $c);
+            &:nth-child(#{$i}) {
+              border-bottom-color: #{$c};
+            }
+          }
+        }
+      }
+    }
+  }
+  header,
+  main,
+  footer {
+    padding: 4rem;
+    @include sumaho {
+      padding: 2rem;
+    }
+  }
+  footer {
+    margin-top: 6rem;
+    color: #fff;
+    background-color: #162951;
+  }
+  section + section {
+    margin-top: 8rem;
+    @include sumaho {
+      margin-top: 5rem;
+    }
+  }
+  h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    @include sumaho {
+      font-size: 3rem;
+    }
+  }
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    border-left: 10px solid #162951;
+    line-height: 1;
+    padding-left: 0.3em;
+    @include sumaho {
+      font-size: 2rem;
+    }
+  }
+  table {
+    &.type1 {
+      @include sumaho {
+        font-size: 80%;
+      }
+      @include thtd {
+        border: 1px solid #999;
+      }
+      @include th {
+        background-color: #eee;
+      }
+    }
+  }
+  p > a {
+    color: #162951;
+    text-decoration: underline;
+    text-decoration-color: #162951;
+  }
+  .item {
+    color: #ffffff;
+    background-color: #162951;
+    padding: 1em;
+    border: 1px solid #fff;
+    @include sumaho {
+      font-size: 50%;
+      padding: 0.5em;
+    }
+  }
+  .btn {
+    margin-right: 1.5rem;
+    margin-bottom: 1.5rem;
+    min-width: 8rem;
+    &:last-child {
+      margin-right: 0;
+    }
+    > a {
+      display: block;
+      padding: 0.5em;
+      color: #fff;
+      background-color: #666;
+      border-radius: 0.2em;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background-color: #999;
+      }
+    }
+  }
+  img[usemap],
+  map area[shape] {
+    outline-color: #f00;
+  }
+  .slick-dots li button:before {
+    font-size: 1rem;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    color: #666;
+  }
+  #dummy {
+    background-image: url(/common/img/dummy/dummy.png);
+    background-size: cover;
+    background-position: center;
+    padding: 10rem;
+  }
+  .button {
+    width: 100%;
+    font-size: 120%;
+    padding: 1em;
+    @include sumaho {
+      padding: 0.5em;
+    }
+  }
+  .textarea {
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 1em;
+    color: #000;
+  }
+  .reservation {
+    > input {
+      text-align: center;
+      width: 7em;
+    }
+  }
+}

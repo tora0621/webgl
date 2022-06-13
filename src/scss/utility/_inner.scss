@@ -1,0 +1,26 @@
+@use '../global/mixin/' as *;
+
+// 要素下のマージン
+// ブレークポイント(s,ss)＋inner＋数字(0~20)
+// 例) .ssinner5 -> スマホ時マージン下5rem
+
+//クラス名の接頭辞
+$classPrefix: 'inner';
+
+@mixin main($breakpoint: '') {
+  @for $i from 0 through 20 {
+    .#{$breakpoint}#{$classPrefix}#{$i} {
+      margin-bottom: #{$i}#{'rem'};
+    }
+  }
+}
+
+@include main();
+
+@include tablet {
+  @include main('s');
+}
+
+@include sumaho {
+  @include main('ss');
+}

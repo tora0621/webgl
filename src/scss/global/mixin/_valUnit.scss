@@ -1,0 +1,7 @@
+// 指定された値と単位を返す
+// 第1引数 数値
+// 第2引数 単位(%,px,em等)
+// 第3引数 trueの時 !important付与 デフォルト false
+@function set($val, $unit, $important: false) {
+  @return if($important, #{$val}#{$unit} !important, #{$val}#{$unit});
+}

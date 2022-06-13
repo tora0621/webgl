@@ -1,0 +1,43 @@
+// CSSハック用モジュール
+//
+// 参考)
+// https://github.com/saadeghi/browser-hack-sass-mixins
+// https://spyweb.media/2017/12/04/ie-edge-css-hacks/
+//
+// 例)
+// .hoge {
+//   margin-top: auto;
+//   @include hack.ie8-11 {
+//     margin-top: 1rem;
+//   }
+// }
+
+// IEにスタイルを適用（IE8～11と同じ）
+@mixin ie {
+  @media screen\0 {
+    @content;
+  }
+}
+
+// IE8～11にスタイルを適用
+@mixin ie8-11 {
+  @media screen\0 {
+    @content;
+  }
+}
+
+// IE9～11にスタイルを適用
+@mixin ie9-11 {
+  @media screen and (min-width: 0\0) and (min-resolution: +72dpi) {
+    @content;
+  }
+}
+
+// IE11のみにスタイルを適用
+@mixin ie11($selector, $map) {
+  #{'_:-ms-fullscreen, :root '} #{$selector} {
+    @each $property, $value in ($map) {
+      #{$property}: $value;
+    }
+  }
+}

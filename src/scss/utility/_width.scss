@@ -1,0 +1,43 @@
+@use '../global/mixin/' as *;
+
+// 幅
+// ブレークポイント(s,ss)＋w＋数字(0~100)＋単位(p,em)
+// 例) .ssw10p -> スマホ時幅10％
+
+//クラス名の接頭辞
+$classPrefix: 'w';
+
+$unitName: (
+  //クラス名の接尾辞、プロパティの単位
+  'p': '%',
+  'em': 'em'
+);
+$unitInfo: (
+  //クラス名の接尾辞、プロパティの単位
+  '': 'rem',
+  'p': '%',
+  'em': 'em'
+);
+
+@mixin main($breakpoint: '') {
+  @each $classSuffix, $unitName in $unitInfo {
+    @for $i from 0 through 100 {
+      .#{$breakpoint}#{$classPrefix}#{$i}#{$classSuffix} {
+        width: #{$i}#{$unitName};
+      }
+    }
+  }
+  .#{$breakpoint}#{$classPrefix}auto {
+    width: auto;
+  }
+}
+
+@include main();
+
+@include tablet {
+  @include main('s');
+}
+
+@include sumaho {
+  @include main('ss');
+}

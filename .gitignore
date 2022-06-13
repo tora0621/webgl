@@ -1,0 +1,8 @@
+node_modules/
+/**/*.css.map
+/**/*.js.map
+/**/*.js.LICENSE.txt
+/**/*.min.html
+.env
+Thumbs.db
+.DS_Store

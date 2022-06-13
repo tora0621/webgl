@@ -1,0 +1,19 @@
+// フォーム用
+@use 'hack';
+
+// デフォルトスタイルをリセット
+@mixin reset-default {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+// セレクトメニュー右端の▼を消す
+@mixin reset-select {
+  @include reset-default;
+  @include hack.ie8-11 {
+    &::-ms-expand {
+      display: none;
+    }
+  }
+}

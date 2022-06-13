@@ -1,0 +1,23 @@
+{
+  "title-require": true,
+  "id-unique": true,
+  "spec-char-escape": true,
+  "tag-pair": true,
+  "doctype-first": true,
+  "attr-no-duplication": true,
+  "attr-lowercase": true,
+  "attr-value-double-quotes": true,
+  "tagname-lowercase": true,
+  "inline-script-disabled": true,
+  "space-tab-mixed-disabled": "space",
+  "attr-value-not-empty": false,
+  "tag-self-close": false,
+  "src-not-empty": false,
+  "head-script-disabled": false,
+  "alt-require": false,
+  "doctype-html5": false,
+  "style-disabled": false,
+  "inline-style-disabled": false,
+  "id-class-ad-disabled": false,
+  "attr-unsafe-chars": false
+}

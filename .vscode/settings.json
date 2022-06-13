@@ -1,0 +1,62 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[css]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "regreplace.on-save": true,
+  "regreplace.commands": [
+    {
+      "name": "Delete self-closing tag",
+      "match": "\\.html?$",
+      "regexp": " />",
+      "replace": ">"
+    }
+  ],
+  "files.associations": {
+    ".prettierrc": "json",
+    ".htmlhintrc": "json"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "php": "html"
+  },
+  "docthis.dateTagFormat": "yyyy/mm/dd",
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "html.format.enable": true,
+  "html.format.contentUnformatted": "pre,code,textarea,ruby",
+  "html.format.endWithNewline": true,
+  "html.format.extraLiners": "head, body, header, footer, main, /body",
+  "html.format.indentHandlebars": false,
+  "html.format.indentInnerHtml": false,
+  "html.format.maxPreserveNewLines": null,
+  "html.format.preserveNewLines": true,
+  "html.format.wrapLineLength": 0,
+  "html.format.wrapAttributes": "auto",
+  "html.format.unformatted": null,
+  "liveServer.settings.proxy": {
+    "enable": false,
+    "baseUri": "/",
+    "proxyUri": "http://127.0.0.1:8080/"
+  },
+  "liveServer.settings.useWebExt": true,
+  "liveServer.settings.port": 0,
+  "[php]": {
+    "editor.defaultFormatter": "junstyle.php-cs-fixer"
+  },
+  "intelephense.environment.phpVersion": "7.4.21",
+  "intelephense.format.enable": false,
+  "intelephense.stubs": ["apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date", "dba", "dom", "enchant", "exif", "FFI", "fileinfo", "filter", "fpm", "ftp", "gd", "gettext", "gmp", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml", "mbstring", "meta", "mysqli", "oci8", "odbc", "openssl", "pcntl", "pcre", "PDO", "pdo_ibm", "pdo_mysql", "pdo_pgsql", "pdo_sqlite", "pgsql", "Phar", "posix", "pspell", "readline", "Reflection", "session", "shmop", "SimpleXML", "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3", "standard", "superglobals", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib", "wordpress", "apcu"],
+  "php-cs-fixer.rules": "@PSR2",
+  "php-cs-fixer.allowRisky": false,
+  "php-cs-fixer.executablePath": "~/.vscode/php-cs-fixer-v2.phar",
+  "php-cs-fixer.onsave": true
+}

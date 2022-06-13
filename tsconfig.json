@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "sourceMap": true, // ソースマップ出力
+    "target": "ES5", // ES5のコードに変換 レガシーブラウザ対応
+    "baseUrl": ".",
+    "strict": true, // 詳細 [https://www.typescriptlang.org/ja/tsconfig#strict]
+    "esModuleInterop": true,
+    "paths": {
+      // @types以外の型定義指定ファイルの指定
+      "sugar": ["node_modules/sugar/sugar.d.ts"],
+      "flatpickr": ["node_modules/flatpickr/dist/typings.d.ts"],
+      "Base64": ["node_modules/js-base64/base64.d.ts"]
+    },
+    "removeComments": true // ビルド時に全てのコメントを削除
+  }
+}

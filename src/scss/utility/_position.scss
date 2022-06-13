@@ -1,0 +1,57 @@
+// ポジション
+
+.rel {
+  position: relative !important;
+}
+
+.fixed {
+  position: fixed !important;
+}
+
+.abs {
+  position: absolute !important;
+  &-l {
+    position: absolute !important;
+    left: 0;
+  }
+  &-r {
+    position: absolute !important;
+    right: 0;
+  }
+  &-t {
+    position: absolute !important;
+    top: 0;
+  }
+  &-b {
+    position: absolute !important;
+    bottom: 0;
+  }
+  &-rt {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+  }
+  &-lt {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+  }
+  &-rb {
+    position: absolute !important;
+    bottom: 0;
+    right: 0;
+  }
+  &-lb {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+  }
+  &-cc {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}

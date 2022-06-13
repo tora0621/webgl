@@ -1,0 +1,9 @@
+{
+  "default": true,
+  "no-duplicate-heading": false,
+  "no-hard-tabs": false,
+  "line-length": false,
+  "no-inline-html": {
+    "allowed_elements": ["br"]
+  }
+}

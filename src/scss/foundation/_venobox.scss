@@ -1,0 +1,20 @@
+//venoboxプラグイン調整
+
+// モーダル開閉時にスクロールバーのガタツキを解消する
+.vbox {
+  &-open {
+    overflow: initial;
+  }
+  &-container {
+    overflow-x: initial;
+    overflow-y: initial;
+    img {
+      // 縦長画像が見切れないようにする
+      max-height: 85vh;
+    }
+  }
+  &-num {
+    // ページ数の右側にも余白を追加する
+    margin: 6px 15px 6px 15px;
+  }
+}

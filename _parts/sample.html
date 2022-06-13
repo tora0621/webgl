@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta property="og:title" content="" name="og:title">
+  <meta property="og:description" content="" name="og:description">
+  <meta property="og:type" content="article" name="og:type">
+  <meta property="og:url" content="" name="og:url">
+  <meta property="og:image" content="" name="og:image">
+  <meta property="og:site_name" content="" name="og:site_name">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials">
+  <link rel="stylesheet" href="/common/css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&amp;family=Noto+Serif+JP:wght@300;400;700;900&amp;display=swap" rel="stylesheet">
+  <script src="/common/js/build.js" defer></script>
+  <title>サンプルページ</title>
+</head>
+
+<body class="sample">
+
+  <header>
+    <h1>サンプルページ</h1>
+    <p>このhtmlファイルは汎用クラスやJavaScript等の表示用サンプルページになります。</p>
+    <p>当ファイル及び<var>src/parts/_sample.scss</var>ファイル、<var>src/ts/sample</var>フォルダはベースコーディング完了時に削除してください。</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>目次</h2>
+      <div class="flex -wrap">
+        <div class="inner btn"><a href="#grid">グリッド</a></div>
+        <div class="inner btn"><a href="#setGrid">動的グリッド(js)</a></div>
+        <div class="inner btn"><a href="#float">フロートレイアウト</a></div>
+        <div class="inner btn"><a href="#image">イメージ</a></div>
+        <div class="inner btn"><a href="#setResponsiveImg">レスポンシブイメージ(js)</a></div>
+        <div class="inner btn"><a href="#setResponsiveImgMaps">レスポンシブイメージマップ(js)</a></div>
+        <div class="inner btn"><a href="#text">テキスト</a></div>
+        <div class="inner btn"><a href="#font">フォント</a></div>
+        <div class="inner btn"><a href="#display">表示</a></div>
+        <div class="inner btn"><a href="#mergin">マージン</a></div>
+        <div class="inner btn"><a href="#padding">パディング</a></div>
+        <div class="inner btn"><a href="#width">幅</a></div>
+        <div class="inner btn"><a href="#inner">インナー</a></div>
+        <div class="inner btn"><a href="#gap">ギャップ</a></div>
+        <div class="inner btn"><a href="#list">リスト</a></div>
+        <div class="inner btn"><a href="#table">テーブル</a></div>
+        <div class="inner btn"><a href="#border">ボーダー</a></div>
+        <div class="inner btn"><a href="#position">ポジション</a></div>
+        <div class="inner btn"><a href="#scroll">スクロール</a></div>
+        <div class="inner btn"><a href="#iframe">インナーフレーム</a></div>
+        <div class="inner btn"><a href="#mixins">ミックスイン</a></div>
+        <div class="inner btn"><a href="#setMatchHeight">高さ揃え(js)</a></div>
+        <div class="inner btn"><a href="#slider">スライダー(js)</a></div>
+        <div class="inner btn"><a href="#reservation">予約モジュール(js)</a></div>
+        <div class="inner btn"><a href="#venobox">VenoBox(js)</a></div>
+        <div class="inner btn"><a href="#base64">Base64(js)</a></div>
+        <div class="inner btn"><a href="#css-asset">scss参照ファイル</a></div>
+        <div class="inner btn"><a href="#purgecss">PurgeCSS確認</a></div>
+      </div>
+    </section>
+
+    <section id="grid">
+      <h2>グリッド</h2>
+      <var class="block">src\scss\foundation\grid\_grid.scss</var>
+      <code class="block">
+        <span class="block">親要素</span>
+        <span class="syntax">.<u>grid</u><u>0</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja">.<u>グリッド<small>(grid固定)</small></u><u>バリエーション<small>(なし,0,任意)</small></u></span>
+        <span class="block">子要素</span>
+        <span class="syntax">.<u>ss</u><u>g</u><u>3</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja">.<u>ブレークポイント<small>(なし,s,ss)</small></u><u>カラム<small>(g固定)</small></u><u>カラム数<small>(1～12)</small></u></span>
+      </code>
+      <p>12カラム・フロートレイアウトのグリッドを採用しています。</p>
+      <p><code>.grid</code>で囲った親要素の中に、子要素<code>.g1</code>～<code>.g12</code>を、数字の合計12まで1行に配置できます。</p>
+      <p>子要素はPC、タブレット、スマホのブレークポイントに合わせて、<code>.g</code>、<code>.sg</code>、<code>.ssg</code>クラスが用意されています。</p>
+      <p>また、各行先頭の子要素にはPC、タブレット、スマホのブレークポイントに合わせて、<code>.fst</code>、<code>.sfst</code>、<code>.ssfst</code>クラスを指定する必要があります。（先頭要素の左マージンを消すスタイル）</p>
+      <br>
+      <div class="grid">
+        <div class="inner item g1 sg1 ssg1 fst sfst ssfst">.g1.fst</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+        <div class="inner item g1 sg1 ssg1">.g1</div>
+      </div>
+      <div class="grid">
+        <div class="inner item g2 sg2 ssg2 fst sfst ssfst">.g2.fst</div>
+        <div class="inner item g2 sg2 ssg2">.g2</div>
+        <div class="inner item g2 sg2 ssg2">.g2</div>
+        <div class="inner item g2 sg2 ssg2">.g2</div>
+        <div class="inner item g2 sg2 ssg2">.g2</div>
+        <div class="inner item g2 sg2 ssg2">.g2</div>
+      </div>
+      <div class="grid">
+        <div class="inner item g3 sg3 ssg3 fst sfst ssfst">.g3.fst</div>
+        <div class="inner item g3 sg3 ssg3">.g3</div>
+        <div class="inner item g3 sg3 ssg3">.g3</div>
+        <div class="inner item g3 sg3 ssg3">.g3</div>
+      </div>
+      <div class="grid">
+        <div class="inner item g4 sg4 ssg4 fst sfst ssfst">.g4.fst</div>
+        <div class="inner item g4 sg4 ssg4">.g4</div>
+        <div class="inner item g4 sg4 ssg4">.g4</div>
+      </div>
+      <div class="grid">
+        <div class="inner item g6 sg6 ssg6 fst sfst ssfst">.g6.fst</div>
+        <div class="inner item g6 sg6 ssg6">.g6</div>
+      </div>
+      <div class="grid">
+        <div class="inner item g12 sg12 ssg12 fst sfst ssfst">.g12.fst</div>
+      </div>
+      <br>
+      <p><code>.fst</code>の代わりに<code>.push</code>を利用すると、子要素を数字の分だけ右に移動することができます。この数字と子要素の数字は合計12以内にする必要があります。</p>
+      <p><code>.push</code>にもPC、タブレット、スマホのブレークポイントに合わせて、<code>.push</code>、<code>.spush</code>、<code>.sspush</code>クラスが用意されています。</p>
+      <br>
+      <div class="grid">
+        <div class="inner item g6 sg6 ssg6 push1 spush1 sspush1">.g6.push1</div>
+        <div class="inner item g6 sg6 ssg6 push2 spush2 sspush2">.g6.push2</div>
+        <div class="inner item g6 sg6 ssg6 push3 spush3 sspush3">.g6.push3</div>
+      </div>
+      <br>
+      <p><code>.d5</code>と<code>.d7</code>を利用すると、5分割・7分割の等間隔カラムを作成できます。</p>
+      <br>
+      <div class="grid">
+        <div class="inner item d5 sd5 ssd5 fst sfst ssfst">.d5.fst</div>
+        <div class="inner item d5 sd5 ssd5">.d5</div>
+        <div class="inner item d5 sd5 ssd5">.d5</div>
+        <div class="inner item d5 sd5 ssd5">.d5</div>
+        <div class="inner item d5 sd5 ssd5">.d5</div>
+      </div>
+      <div class="grid">
+        <div class="inner item d7 sd7 ssd7 fst sfst ssfst">.d7.fst</div>
+        <div class="inner item d7 sd7 ssd7">.d7</div>
+        <div class="inner item d7 sd7 ssd7">.d7</div>
+        <div class="inner item d7 sd7 ssd7">.d7</div>
+        <div class="inner item d7 sd7 ssd7">.d7</div>
+        <div class="inner item d7 sd7 ssd7">.d7</div>
+        <div class="inner item d7 sd7 ssd7">.d7</div>
+      </div>
+      <br>
+      <p><code>.grid</code>を<code>.grid0</code>にすると、子要素のマージンを0にできます。</p>
+      <p>尚、<var>src/scss/foundation/grid/_config.scss</var>でグリッド幅やマージン幅のバリエーションを設定することができます。</p>
+      <br>
+      <div class="grid0">
+        <div class="inner item g3 sg3 ssg3 fst sfst ssfst">.g3.fst</div>
+        <div class="inner item g3 sg3 ssg3">.g3</div>
+        <div class="inner item g3 sg3 ssg3">.g3</div>
+        <div class="inner item g3 sg3 ssg3">.g3</div>
+      </div>
+    </section>
+
+    <section id="setGrid">
+      <h2>動的グリッド</h2>
+      <var class="block">src\ts\common\setGrid.ts</var>
+      <p>動的にグリッドクラスを付与します。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>対象要素</th>
+              <th>トリガー</th>
+              <th>処理内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>全ての要素</td>
+              <td><code>[data-grid]</code></td>
+              <td>data属性に設定したPC・タブレット・スマホの数値で子要素にグリッドクラスを付与する</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="grid" data-grid="3,4,6">
+        <div class="inner item">data-grid="3,4,6"</div>
+        <div class="inner item">data-grid="3,4,6"</div>
+        <div class="inner item">data-grid="3,4,6"</div>
+      </div>
+    </section>
+
+    <section id="float">
+      <h2>フロートレイアウト</h2>
+      <var class="block">src\scss\utility\_float.scss</var>
+      <p>フロートレイアウト用のクラス、クリアフィックスの汎用クラスが定義されています。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.fl</code></td>
+              <td><code>float: left !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.fr</code></td>
+              <td><code>float: right !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.fix</code>,<code>.cf</code></td>
+              <td><code>@include clearfix();</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <p>グリッドの子要素を下記のようにマークアップすると、スマホ時に右側が上、左側が下にレイアウトできます。</p>
+      <br>
+      <div class="grid">
+        <div class="inner item g6 sg6 ssg12 ssfst fr">.g6.ssg12.fr　PC時右・スマホ時上</div>
+        <div class="inner item g6 sg6 ssg12 fst sfst ssfst">.g6.ssg12.fst　PC時左・スマホ時下</div>
+      </div>
+    </section>
+
+    <section id="image">
+      <h2>イメージ</h2>
+      <var class="block">src\scss\utility\_image.scss</var>
+      <p>イメージ<code>img</code>、ピクチャー<code>picture</code>要素の汎用スタイルが定義されています。</p>
+      <p><code>img</code>,<code>picture</code>要素はデフォルトでレスポンシブ対応になっていますので、画像を親要素の幅一杯まで広げたい場合に<code>.fit</code>クラスを付与します。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>対象要素</th>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>img</code>,<code>picture</code></td>
+              <td><code>.fit</code></td>
+              <td><code>width: 100%;</code>,<code>height: auto;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="grid">
+        <div class="inner item g2 sg4 ssg12 fst sfst ssfst">
+          <p>.g2幅 600x480</p>
+          <img src="https://placehold.jp/640x480.png" alt="dummy"><br>
+        </div>
+        <div class="inner item g5 sg4 ssg12 ssfst">
+          <p>.g5幅 600x480</p>
+          <img src="https://placehold.jp/640x480.png" alt="dummy">
+        </div>
+        <div class="inner item g5 sg4 ssg12 ssfst">
+          <p>.g5幅 600x480（.fit指定あり）</p>
+          <img src="https://placehold.jp/640x480.png" alt="dummy" class="fit">
+        </div>
+      </div>
+    </section>
+
+    <section id="setResponsiveImg">
+      <h2>レスポンシブイメージ</h2>
+      <var class="block">src\ts\common\setResponsiveImg.ts</var>
+      <p>イメージ<code>img</code>要素にデバイスに応じた画像ファイルを読み込みます。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>対象要素</th>
+              <th>トリガー</th>
+              <th>処理内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>img</code></td>
+              <td><code>img[data-pcimg]</code></td>
+              <td>data属性に設定したPC・タブレット・スマホの画像をsrc属性に設定する</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="grid">
+        <div class="inner item g12 sg12 ssg12 fst sfst ssfst">
+          <img src="" data-pcimg="https://placehold.jp/1920x768.png?text=pcimg" data-tabletimg="https://placehold.jp/768x1024.png?text=tabletimg" data-sumahoimg="https://placehold.jp/375x667.png?text=sumahoimg" alt="dummy">
+        </div>
+        <div class="inner item g12 sg12 ssg12 fst sfst ssfst">
+          <p>タブレットの指定を省略するとPCと同じ画像を表示します。</p>
+          <img src="" data-pcimg="https://placehold.jp/1920x768.png?text=pcimg" data-sumahoimg="https://placehold.jp/375x667.png?text=sumahoimg" alt="dummy">
+        </div>
+      </div>
+    </section>
+
+    <section id="setResponsiveImgMaps">
+      <h2>レスポンシブイメージマップ</h2>
+      <var class="block">src\ts\common\setResponsiveImgMaps.ts</var>
+      <p>イメージ<code>img</code>要素のイメージマップ（クリッカブルマップ）をレスポンシブ対応させます。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>対象要素</th>
+              <th>トリガー</th>
+              <th>処理内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>img</code></td>
+              <td><code>img[usemap]</code></td>
+              <td>area要素のcoords属性を画像サイズに合わせて自動計算する</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="grid">
+        <div class="inner item g6 sg6 ssg12 fst sfst ssfst">
+          <img src="https://placehold.jp/1000x200.png" alt="" usemap="#map">
+          <map name="map">
+            <area shape="rect" coords="50,50,150,150" href="#rect" alt="矩形">
+            <area shape="circle" coords="250,100,50" href="#circle" alt="円形">
+            <area shape="poly" coords="400,50,450,150,350,150" href="#poly" alt="多角形">
+          </map>
+        </div>
+      </div>
+    </section>
+
+    <section id="text">
+      <h2>テキスト</h2>
+      <var class="block">src\scss\utility\_text.scss</var>
+      <p>テキストの改行や揃えなどの汎用スタイルが定義されています。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.reader</code></td>
+              <td>スクリーンリーダーによる読み上げ用テキストを非表示にする</td>
+            </tr>
+            <tr>
+              <td><code>.nobr</code></td>
+              <td><code>white-space: nowrap;</code></td>
+            </tr>
+            <tr>
+              <td><code>.break</code></td>
+              <td><code>word-break: break-all;</code></td>
+            </tr>
+            <tr>
+              <td><code>.tl</code></td>
+              <td><code>text-align: left !important;</code>および直下の子要素を左揃えにする</td>
+            </tr>
+            <tr>
+              <td><code>.tr</code></td>
+              <td><code>text-align: right !important;</code>および直下の子要素を右揃えにする</td>
+            </tr>
+            <tr>
+              <td><code>.tc</code></td>
+              <td><code>text-align: center !important;</code>および直下の子要素を中央揃えにする</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="font">
+      <h2>フォント</h2>
+      <var class="block">src\scss\utility\_font.scss</var>
+      <p>フォントのサイズやスタイルなどの汎用スタイルが定義されています。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.s</code>,<code>.ss</code>,<code>.sss</code></td>
+              <td>80%→60%→40%の3段階でフォントサイズ<code>font-size</code>を小さくする</td>
+            </tr>
+            <tr>
+              <td><code>.l</code>,<code>.ll</code>,<code>.lll</code></td>
+              <td>120%→140%→160%の3段階でフォントサイズ<code>font-size</code>を大きくする</td>
+            </tr>
+            <tr>
+              <td><code>.italic</code></td>
+              <td><code>font-style: italic;</code></td>
+            </tr>
+            <tr>
+              <td><code>.thin</code>,<code>.light</code>,<code>.regular</code>,<code>.bold</code>,<code>.black</code></td>
+              <td>100→300→normal→bold→900の5段階でフォントの太さ<code>font-weight</code>を設定する</td>
+            </tr>
+            <tr>
+              <td><code>.upper</code></td>
+              <td><code>text-transform: uppercase;</code></td>
+            </tr>
+            <tr>
+              <td><code>.lower</code></td>
+              <td><code>text-transform: lowercase;</code></td>
+            </tr>
+            <tr>
+              <td><code>.caps</code></td>
+              <td><code>text-transform: capitalize;</code></td>
+            </tr>
+            <tr>
+              <td><code>.normal</code></td>
+              <td><code>font-style</code>,<code>font-weight</code>,<code>text-transform</code>に<code>normal !important;</code>を設定する</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="display">
+      <h2>表示</h2>
+      <var class="block">src\scss\utility\_display.scss</var>
+      <p>表示・非表示など<code>display</code>や<code>visibility</code>に関する汎用クラスが定義されています。</p>
+      <p>また、タブレットやスマホの表示時に表示・非表示を切り替えるクラスが定義されています。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 third sp3 nobr">
+          <thead>
+            <tr>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.none</code></td>
+              <td><code>display: none !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.block</code></td>
+              <td><code>display: block !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.inline</code></td>
+              <td><code>display: inline !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.inline-block</code></td>
+              <td><code>display: inline-block !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.table</code></td>
+              <td><code>display: table !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.cell</code></td>
+              <td><code>display: table-cell !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.flex</code></td>
+              <td><code>display: flex !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.flex-column</code></td>
+              <td><code>display: flex !important;</code><br><code>flex-direction: column !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.hide</code></td>
+              <td><code>visibility: hidden !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.show</code></td>
+              <td><code>visibility: visible !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.tablet</code></td>
+              <td>デフォルトは<code>display: none !important;</code><br>タブレット時に<code>display: inherit !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.notablet</code></td>
+              <td>タブレット時は<code>display: none !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.sumaho</code></td>
+              <td>デフォルトは<code>display: none !important;</code><br>スマホ時に<code>display: inherit !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.nosumaho</code></td>
+              <td>スマホ時に<code>display: none !important;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="mergin">
+      <h2>マージン</h2>
+      <var class="block">src\scss\utility\_margin.scss</var>
+      <code class="block">
+        <span class="syntax">.<u>ss</u><u>m</u><u>b</u><u>4</u><u>p</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja">.<u>ブレークポイント<small>(なし,s,ss)</small></u><u>マージン<small>(m固定)</small></u><u>方向<small>(t,b,l,r,a=全方向)</small></u><u>サイズ<small>(整数0～100)</small></u><u>単位<small>(なし=rem/10,p=%,em)</small></u></span>
+      </code>
+      <p><code>.m</code>クラスでマージンを付与することができます。ブレークポイントに合わせて<code>s</code>、<code>ss</code>指定が可能です。</p>
+      <p>例えば<code>.ssmb4p</code>は、スマホ時<code class="in">ss</code>にマージン下<code class="in">mb</code>4％<code class="in">4p</code>を付与することができます。尚、単位の指定なしの場合はpx相当になります。</p>
+    </section>
+
+    <section id="padding">
+      <h2>パディング</h2>
+      <var class="block">src\scss\utility\_padding.scss</var>
+      <code class="block">
+        <span class="syntax">.<u>ss</u><u>p</u><u>t</u><u>2</u><u>em</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja">.<u>ブレークポイント<small>(なし,s,ss)</small></u><u>パディング<small>(p固定)</small></u><u>方向<small>(t,b,l,r,a=全方向)</small></u><u>サイズ<small>(整数0～100)</small></u><u>単位<small>(なし=rem/10,p=%,em)</small></u></span>
+      </code>
+      <p><code>.p</code>クラスでパディングを付与することができます。ブレークポイントに合わせて<code>s</code>、<code>ss</code>指定が可能です。</p>
+      <p>例えば<code>.sspt2em</code>は、スマホ時<code class="in">ss</code>にパディング上<code class="in">pt</code>2文字分<code class="in">2em</code>を付与することができます。尚、単位の指定なしの場合は10分の1のrem値（およそpxに相当）になります。</p>
+    </section>
+
+    <section id="width">
+      <h2>幅</h2>
+      <var class="block">src\scss\utility\_width.scss</var>
+      <code class="block">
+        <span class="syntax">.<u>ss</u><u>w</u><u>8</u><u>em</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja">.<u>ブレークポイント<small>(なし,s,ss)</small></u><u>幅<small>(w固定)</small></u><u>サイズ<small>(整数0～100)</small></u><u>単位<small>(p=%,em)</small></u></span>
+      </code>
+      <p><code>.w</code>クラスで幅を付与することができます。ブレークポイントに対応した<code>s</code>、<code>ss</code>指定が可能です。</p>
+      <p>例えば<code>.ssw8em</code>は、スマホ時<code class="in">ss</code>に幅<code class="in">w</code>8em<code class="in">8文字分</code>を付与することができます。尚、単位はパーセント又は文字(em)となります。</p>
+    </section>
+
+    <section id="inner">
+      <h2>インナー</h2>
+      <var class="block">src\scss\utility\_inner.scss</var>
+      <code class="block">
+        <span class="syntax">.<u>ss</u><u>inner</u><u>5</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja">.<u>ブレークポイント<small>(なし,s,ss)</small></u><u>インナー<small>(inner固定)</small></u><u>サイズ<small>(整数0～20rem)</small></u></span>
+      </code>
+      <p><code>.inner</code>クラスで下マージンを付与することができます。ブレークポイントに対応した<code>s</code>、<code>ss</code>指定が可能です。</p>
+      <p>例えば<code>.ssinner5</code>は、スマホ時<code class="in">ss</code>に下マージン<code class="in">inner</code>5rem<code class="in">5</code>を付与することができます。</p>
+    </section>
+
+    <section id="gap">
+      <h2>ギャップ</h2>
+      <var class="block">src\scss\utility\_gap.scss</var>
+      <code class="block">
+        <span class="syntax">.<u>ss</u><u>gap</u><u>3</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja">.<u>ブレークポイント<small>(なし,s,ss)</small></u><u>ギャップ<small>(gap固定)</small></u><u>サイズ<small>(整数0～10rem)</small></u></span>
+      </code>
+      <p>親要素に<code>.gap</code>クラスを付与すると、直下の先頭以外の子要素全てに同じ上マージンを付与することができます。ブレークポイントに対応した<code>s</code>、<code>ss</code>指定が可能です。</p>
+      <p>例えば<code>.ssgap3</code>は、スマホ時<code class="in">ss</code>に先頭以外の子要素全てに上マージン<code class="in">gap</code>3rem<code class="in">3</code>を付与することができます。</p>
+      <p>個々の要素にインナー等の汎用クラスを付与するとHTMLコードが煩雑になる場合、親要素にギャップを付与するとスッキリと記述できる場合があります。</p>
+    </section>
+
+    <section id="list">
+      <h2>リスト</h2>
+      <var class="block">src\scss\utility\_list.scss</var>
+      <p>項目の順序付きリスト<code>ol</code>、項目の順序なしリスト<code>ul</code>の汎用スタイルが定義されています。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 third sp3 nobr">
+          <thead>
+            <tr>
+              <th>対象要素</th>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ul</code></td>
+              <td><code>.bullet</code></td>
+              <td>直下の<code>li</code>要素を1文字下げする</td>
+            </tr>
+            <tr>
+              <td><code>ol</code>,<code>ul</code></td>
+              <td><code>.liner</code></td>
+              <td>直下の<code>li</code>要素をフロートさせる</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <code class="block">
+        <span class="syntax"><u>ul</u>.<u>sp</u><u>1</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja"><u>対象要素<small>(ol,ul)</small></u>.<u>スペース<small>(sp固定)</small></u><u>サイズ<small>(整数1～5)</small></u></span>
+      </code>
+      <p><code>.sp</code>クラスで直下の項目<code>li</code>に一律の下マージンを付与することができます。項目のフォントサイズに依存しますのでブレークポイントの対応はありません。</p>
+    </section>
+
+    <section id="table">
+      <h2>テーブル</h2>
+      <var class="block">src\scss\utility\_table.scss</var>
+      <p>テーブル<code>table</code>の汎用スタイルが定義されています。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 third sp3 nobr">
+          <thead>
+            <tr>
+              <th>対象要素</th>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>table</code></td>
+              <td><code>.full</code></td>
+              <td><code>width: 100%;</code></td>
+            </tr>
+            <tr>
+              <td><code>table</code></td>
+              <td><code>.half</code></td>
+              <td><code>width: 50%;</code></td>
+            </tr>
+            <tr>
+              <td><code>table</code></td>
+              <td><code>.third</code></td>
+              <td><code>width: calc(100% / 3);</code></td>
+            </tr>
+            <tr>
+              <td><code>table</code></td>
+              <td><code>.quarter</code></td>
+              <td><code>width: 25%;</code></td>
+            </tr>
+            <tr>
+              <td><code>table</code></td>
+              <td><code>.thtl</code></td>
+              <td>直下の<code>th</code>要素のテキストを左揃えにする</td>
+            </tr>
+            <tr>
+              <td><code>table</code></td>
+              <td><code>.thtr</code></td>
+              <td>直下の<code>th</code>要素のテキストを右揃えにする</td>
+            </tr>
+            <tr>
+              <td><code>table</code></td>
+              <td><code>.thtc</code></td>
+              <td>直下の<code>th</code>要素のテキストを中央揃えにする</td>
+            </tr>
+            <tr>
+              <td><code>table</code>,<code>th</code>,<code>td</code></td>
+              <td><code>.vtop</code></td>
+              <td>直下または対象の<code>th</code>,<code>td</code>要素のテキストを上揃えにする</td>
+            </tr>
+            <tr>
+              <td><code>table</code>,<code>th</code>,<code>td</code></td>
+              <td><code>.vbtm</code></td>
+              <td>直下または対象の<code>th</code>,<code>td</code>要素のテキストを上揃えにする</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <code class="block">
+        <span class="syntax"><u>table</u>.<u>sp</u><u>1</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja"><u>対象要素<small>(table固定)</small></u>.<u>スペース<small>(sp固定)</small></u><u>サイズ<small>(整数1～5)</small></u></span>
+      </code>
+      <p><code>.sp</code>クラスで直下のセル要素<code>th</code>,<code>td</code>にパディングを付与することができます。セル要素のフォントサイズに依存しますのでブレークポイントの対応はありません。</p>
+    </section>
+
+    <section id="border">
+      <h2>ボーダー</h2>
+      <var class="block">src\scss\utility\_border.scss</var>
+      <p>ボーダーの汎用スタイルが定義されています。</p>
+      <br>
+      <code class="block">
+        <span class="syntax">.<u>bn</u><u>&ndash;l</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja">.<u>ボーダーナン<small>(bn固定)</small></u><u>方向<small>(なし,-l=左,-r=右,-t=上,-b=下,-rt=右上,-rb=右下,-lt=左上,-lb=左下,-lr=左右,-tb=上下)</small></u></span>
+      </code>
+      <p><code>.bn</code>クラスで指定方向のボーダーを非表示にできます。方向の指定なしでボーダーを全て非表示にします。</p>
+    </section>
+
+    <section id="position">
+      <h2>ポジション</h2>
+      <var class="block">src\scss\utility\_position.scss</var>
+      <p>ポジション<code>position</code>に関する汎用スタイルが定義されています。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 third sp3 nobr">
+          <thead>
+            <tr>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.abs</code></td>
+              <td><code>position: absolute !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.rel</code></td>
+              <td><code>position: relative !important;</code></td>
+            </tr>
+            <tr>
+              <td><code>.fixed</code></td>
+              <td><code>position: fixed !important;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <code class="block">
+        <span class="syntax">.<u>abs</u><u>&ndash;r</u></span>
+        <span>&#8594;</span>
+        <span class="syntax ja">.<u>アブソリュート<small>(abs固定)</small></u><u>方向<small>(なし,-l=左,-r=右,-t=上,-b=下,-rt=右上,-rb=右下,-lt=左上,-lb=左下,-cc=中央)</small></u></span>
+      </code>
+      <p><code>.abs</code>クラスで親要素に対して絶対配置にできます。指定した方向のオフセットを<code>0</code>に設定します。<code>&ndash;cc</code>は天地中央配置を設定します。</p>
+    </section>
+
+    <section id="scroll">
+      <h2>スクロール</h2>
+      <var class="block">src\scss\utility\_scroll.scss</var>
+      <p>主に横に長いテーブル<code>table</code>をスマホ時に横スクロールさせるクラスが定義されています。</p>
+      <p>通常<code>div.scroll&gt;table</code>のマークアップで利用します。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 third sp3 nobr">
+          <thead>
+            <tr>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.scroll</code></td>
+              <td>スマホ時に<code>overflow: auto;</code><br>子要素が<code>table</code>の場合<code>white-space: nowrap;</code>を設定する</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="iframe">
+      <h2>インナーフレーム</h2>
+      <var class="block">src\scss\utility\_iframe.scss</var>
+      <p>主にGoogleマップやYouTubeなどの埋め込み用インナーフレーム<code>iframe</code>をレスポンシブ対応させるクラスが定義されています。</p>
+      <p>そのままでも利用できますが、表示サイズを調整したい場合は各種数値を変更してください。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 third sp3 nobr">
+          <thead>
+            <tr>
+              <th>クラス名</th>
+              <th>適用スタイル</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.googlemap</code></td>
+              <td>Googleマップのインナーフレームをレスポンシブ対応させる。スマホ時に幅90%・正方形表示にする</td>
+            </tr>
+            <tr>
+              <td><code>.youtube</code></td>
+              <td>YouTubeのインナーフレームをレスポンシブ対応させる</td>
+            </tr>
+            <tr>
+              <td><code>.flickr</code></td>
+              <td>Flickr<small>(フリッカー)</small>のインナーフレームをレスポンシブ対応させる</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="mixins">
+      <h2>ミックスイン</h2>
+      <var class="block">src\scss\global\mixins</var>
+      <p>Sassをコーディングする際に汎用的に利用できるミックスインを格納しています。詳細は各ファイルをご確認ください。</p>
+      <p>利用する場合、<code>@use '../global/' as *;</code>のように読み込んでください。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 third sp3 nobr">
+          <thead>
+            <tr>
+              <th>ミックスイン名</th>
+              <th>用途</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>@include clearfix;</code></td>
+              <td>クリアフィックスを適用する</td>
+            </tr>
+            <tr>
+              <td><code>@include sumaho {}</code></td>
+              <td>スマホ（スマホ縦を想定）幅に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include tablet {}</code></td>
+              <td>タブレット（スマホ横を含む）幅に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include note {}</code></td>
+              <td>ノートPC（タブレット横を含む）幅に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include portrait {}</code></td>
+              <td>ビューポートが縦長の場合に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include landscape {}</code></td>
+              <td>ビューポートが横長の場合に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include media($dp) {}</code></td>
+              <td>引数<code>$dp</code>幅に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include ie {}</code></td>
+              <td>Internet Explorerの11以下（正確にはIE8～11）に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include th {}</code></td>
+              <td>テーブル<code>table</code>直下の<code>th</code>要素に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include td {}</code></td>
+              <td>テーブル<code>table</code>直下の<code>td</code>要素に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include thtd {}</code></td>
+              <td>テーブル<code>table</code>直下の<code>th</code>,<code>td</code>要素に適用させたいスタイルを記述する</td>
+            </tr>
+            <tr>
+              <td><code>@include reset-default;</code></td>
+              <td>テキストボックスやチェックボックスなどフォーム部品のデフォルトのスタイルをリセットする</td>
+            </tr>
+            <tr>
+              <td><code>@include reset-select;</code></td>
+              <td>セレクトメニュー右端の▼を消す</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="setMatchHeight">
+      <h2>高さ揃え</h2>
+      <var class="block">src\ts\common\setMatchHeight.ts</var>
+      <p>横並び要素の高さを揃えます。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>対象要素</th>
+              <th>トリガー</th>
+              <th>処理内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>全ての要素</td>
+              <td><code>.js-matchHeight</code></td>
+              <td>表示時において横並びと判定される要素の高さを揃える。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="grid">
+        <div class="inner item g3 sg3 ssg12 fst sfst ssfst js-matchHeight">
+          <p>1行目</p>
+        </div>
+        <div class="inner item g3 sg3 ssg12 ssfst js-matchHeight">
+          <p>1行目</p>
+          <p>2行目</p>
+        </div>
+        <div class="inner item g3 sg3 ssg12 ssfst js-matchHeight">
+          <p>1行目</p>
+          <p>2行目</p>
+          <p>3行目</p>
+        </div>
+        <div class="inner item g3 sg3 ssg12 ssfst js-matchHeight">
+          <p>1行目</p>
+          <p>2行目</p>
+          <p>3行目</p>
+          <p>4行目</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="slider">
+      <h2>スライダー</h2>
+      <var class="block">src\ts\sample\setSlider.ts</var>
+      <p>汎用的なスライダープラグインのサンプルコードです。</p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>対象要素</th>
+              <th>トリガー</th>
+              <th>処理内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>全ての要素</td>
+              <td><code>.js-slider</code></td>
+              <td>Slickプラグインを適用する。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <ul class="js-slider">
+        <li>
+          <div class="item">
+            <img src="" data-lazy="https://placehold.jp/640x480.png" alt="1">
+            <p class="tc">1</p>
+          </div>
+        </li>
+        <li>
+          <div class="item">
+            <img src="" data-lazy="https://placehold.jp/640x480.png" alt="2">
+            <p class="tc">2</p>
+          </div>
+        </li>
+        <li>
+          <div class="item">
+            <img src="" data-lazy="https://placehold.jp/640x480.png" alt="3">
+            <p class="tc">3</p>
+          </div>
+        </li>
+        <li>
+          <div class="item">
+            <img src="" data-lazy="https://placehold.jp/640x480.png" alt="4">
+            <p class="tc">4</p>
+          </div>
+        </li>
+        <li>
+          <div class="item">
+            <img src="" data-lazy="https://placehold.jp/640x480.png" alt="5">
+            <p class="tc">5</p>
+          </div>
+        </li>
+        <li>
+          <div class="item">
+            <img src="" data-lazy="https://placehold.jp/640x480.png" alt="6">
+            <p class="tc">6</p>
+          </div>
+        </li>
+        <li>
+          <div class="item">
+            <img src="" data-lazy="https://placehold.jp/640x480.png" alt="7">
+            <p class="tc">7</p>
+          </div>
+        </li>
+        <li>
+          <div class="item">
+            <img src="" data-lazy="https://placehold.jp/640x480.png" alt="8">
+            <p class="tc">8</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="reservation">
+      <h2>予約モジュール</h2>
+      <var class="block">src\ts\sample\reservation.ts</var>
+      <p>予約モジュールのようにWebサイト全体で利用するパーツをAjaxで読み込むサンプルコードです。別の方法としてテンプレートリテラルで埋め込むことも可能です。</p>
+      <p>カレンダーに<a href="https://flatpickr.js.org/" target="_blank" rel="noopener noreferrer">flatpickr</a>を利用しています。</p>
+      <br>
+      <div class="js-reservation"></div>
+    </section>
+
+    <section id="venobox">
+      <h2>VenoBox</h2>
+      <var class="block">src\ts\sample\setPopup.ts</var>
+      <p>ライトボックス系のプラグインのサンプルコードです。</p>
+      <p><a href="https://veno.es/venobox/" target="_blank" rel="noopener noreferrer">VenoBox - responsive jQuery modal window plugin</a></p>
+      <br>
+      <div class="scroll">
+        <table class="type1 sp3 nobr">
+          <thead>
+            <tr>
+              <th>対象要素</th>
+              <th>トリガー</th>
+              <th>処理内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>a</code></td>
+              <td><code>.js-popup</code></td>
+              <td>VenoBoxプラグインを適用する。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="flex -wrap">
+        <div class="inner btn"><a href="https://placehold.jp/1280x768.png" class="js-popup item" data-gall="gallery" data-title="ポップアップ1">ポップアップ1</a></div>
+        <div class="inner btn"><a href="https://placehold.jp/1280x768.png" class="js-popup item" data-gall="gallery" data-title="ポップアップ2">ポップアップ2</a></div>
+        <div class="inner btn"><a href="https://placehold.jp/1280x768.png" class="js-popup item" data-gall="gallery" data-title="ポップアップ3">ポップアップ3</a></div>
+      </div>
+    </section>
+
+    <section id="base64">
+      <h2>Base64エンコード・デコード</h2>
+      <br>
+      <div class="grid">
+        <div class="inner g2 sg2 ssg6 fst sfst ssfst">
+          <button class="button" id="encode">エンコード</button>
+        </div>
+        <div class="inner g2 sg2 ssg6">
+          <button class="button" id="decode">デコード</button>
+        </div>
+        <div class="inner item g6 sg6 ssg12 fst sfst ssfst">
+          <textarea id="decode_result" rows="5" placeholder="変換前" class="textarea"></textarea>
+        </div>
+        <div class="inner item g6 sg6 ssg12 ssfst">
+          <textarea id="encode_result" rows="5" placeholder="変換後" class="textarea"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section id="css-asset">
+      <h2>scss参照ファイル</h2>
+      <p>scssから参照した画像等のリソースファイルについて、5KBまではcssに取り込まれます。</p>
+      <p><a href="https://webpack.js.org/configuration/module/#ruleparserdataurlcondition" target="_blank" rel="noopener noreferrer">Rule.parser.dataUrlCondition</a></p>
+      <br>
+      <div class="grid">
+        <div class="inner item g6 sg6 ssg12 fst sfst ssfst" id="dummy">dummy.png (13KB)</div>
+      </div>
+    </section>
+
+    <section id="purgecss">
+      <h2>PurgeCSS確認</h2>
+      <p>下記<code>.use-css-test</code>クラスは、このhtmlで「使用されている」クラスになりますのでstyle.cssに出力されます。</p>
+      <p>「使用されていない」クラス及び@keyframes、CSS変数、@font-faceは削除されます。</p>
+      <br>
+      <div class="item use-css-test">.use-css-test</div>
+    </section>
+
+  </main>
+
+  <footer class="tc">
+    <div class="copyright">&copy;2021 cab Co.,Ltd.</div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+// ボーダー
+
+.bn {
+  border-width: 0 !important;
+  &-l {
+    border-left-width: 0 !important;
+  }
+  &-r {
+    border-right-width: 0 !important;
+  }
+  &-t {
+    border-top-width: 0 !important;
+  }
+  &-b {
+    border-bottom-width: 0 !important;
+  }
+  &-rt {
+    border-right-width: 0 !important;
+    border-top-width: 0 !important;
+  }
+  &-rb {
+    border-right-width: 0 !important;
+    border-bottom-width: 0 !important;
+  }
+  &-lt {
+    border-left-width: 0 !important;
+    border-top-width: 0 !important;
+  }
+  &-lb {
+    border-left-width: 0 !important;
+    border-bottom-width: 0 !important;
+  }
+  &-lr {
+    border-left-width: 0 !important;
+    border-right-width: 0 !important;
+  }
+  &-tb {
+    border-top-width: 0 !important;
+    border-bottom-width: 0 !important;
+  }
+}

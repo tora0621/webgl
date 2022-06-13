@@ -1,0 +1,77 @@
+@use '../global/mixin/' as *;
+
+// テーブル
+
+table {
+  &.full {
+    width: 100%;
+  }
+  &.half {
+    width: 50%;
+  }
+  &.third {
+    width: calc(100% / 3);
+  }
+  &.quarter {
+    width: 25%;
+  }
+  &.thtl {
+    @include th {
+      text-align: left;
+    }
+  }
+  &.thtr {
+    @include th {
+      text-align: right;
+    }
+  }
+  &.thtc {
+    @include th {
+      text-align: center;
+    }
+  }
+  &.vtop {
+    @include thtd {
+      vertical-align: top;
+    }
+  }
+  &.vbtm {
+    @include thtd {
+      vertical-align: bottom;
+    }
+  }
+  th.vtop,
+  td.vtop {
+    vertical-align: top;
+  }
+  th.vbtm,
+  td.vbtm {
+    vertical-align: bottom;
+  }
+  @for $i from 1 through 5 {
+    &.sp#{$i} {
+      @include thtd {
+        padding: #{0.2 * $i}em #{0.4 * $i}em;
+      }
+    }
+  }
+  %oneline {
+    @include sumaho {
+      width: 100%;
+      display: block;
+    }
+  }
+  &.oneline {
+    > thead,
+    > tbody {
+      @extend %oneline;
+      > tr {
+        @extend %oneline;
+        > th,
+        > td {
+          @extend %oneline;
+        }
+      }
+    }
+  }
+}

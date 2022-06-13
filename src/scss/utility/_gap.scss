@@ -1,0 +1,32 @@
+@use '../global/mixin/' as *;
+
+// コンテンツ内の要素間の隙間
+// ブレークポイント(s,ss)＋gap＋数字(0~10)
+// 例) .ssgap3 -> スマホ時3rem間隔の上マージン
+// ※.mbクラスが指定された見出しの次要素には適用しない
+
+//クラス名
+$className: 'gap';
+
+//プロパティの単位
+$unitName: 'rem';
+
+@mixin main($breakpoint: '') {
+  @for $i from 0 through 10 {
+    .#{$breakpoint}#{$className}#{$i} {
+      > *:not(.mb) + * {
+        margin-top: #{$i}#{$unitName};
+      }
+    }
+  }
+}
+
+@include main();
+
+@include tablet {
+  @include main('s');
+}
+
+@include sumaho {
+  @include main('ss');
+}

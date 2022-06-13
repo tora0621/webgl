@@ -1,0 +1,28 @@
+{
+  "recommendations": [
+    "ms-ceintl.vscode-language-pack-ja", // VSCode日本語化
+    "visualstudioexptteam.vscodeintellicode", // VSCode自動補完
+    "mosapride.zenkaku", // 全角スペース可視化
+    "sohamkamani.code-eol", // 改行コード可視化
+    "christian-kohler.path-intellisense", // ファイル名自動補完
+    "esbenp.prettier-vscode", // コードフォーマッター
+    "ritwickdey.LiveServer", // ローカル開発サーバー
+    "mkaufman.HTMLHint", // HTML文法チェック
+    "oouo-diogo-perdigao.docthis", // JSDocコメント自動生成
+    "mhutchie.git-graph", // Git コミット履歴グラフ表示
+    "mkxml.vscode-filesize", // Status Barにアクティブファイルのファイルサイズ表示
+    "roscop.activefileinstatusbar", // Status Barにアクティブファイルのパス表示
+    "eamodio.gitlens", // Status Barにカレント行の最終コミット表示などVSCodeのGit機能を強化
+    "domir.regreplace", // 保存時に正規表現置換を実行
+    "Tobermory.es6-string-html", // テンプレートリテラルの構文ハイライト
+    "yzhang.markdown-all-in-one", // Markdownコード補完等
+    "davidanson.vscode-markdownlint", // Markdown文法チェック
+    "shd101wyy.markdown-preview-enhanced", // Markdownプレビュー
+    "formulahendry.auto-rename-tag", // 終了タグの自動補完
+    "gencer.html-slim-scss-css-class-completion", // HTML側のSCSS,CSS自動補完
+    "mrmlnc.vscode-scss", // SCSSの自動補完
+    "simonsiefke.svg-preview", // SVGファイルビュワー
+    "hookyqr.minify" // CSS,HTML等のミニファイ化
+  ],
+  "unwantedRecommendations": []
+}

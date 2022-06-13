@@ -1,0 +1,36 @@
+@use '../global/mixin/' as *;
+
+// リスト
+
+ul {
+  // 1文字下げ
+  &.bullet {
+    > li {
+      text-indent: -1em;
+      margin-left: 1em;
+    }
+  }
+}
+ol,
+ul {
+  // リスト要素間
+  @for $i from 1 through 5 {
+    &.sp#{$i} {
+      > li + li {
+        margin-top: #{$i * 0.1}em;
+      }
+    }
+  }
+  // リストを横並びにする
+  &.liner {
+    > li {
+      float: left;
+      margin-right: 1em;
+      margin-bottom: 0.2em;
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    @include clearfix();
+  }
+}

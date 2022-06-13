@@ -1,0 +1,12 @@
+@use '../global/mixin/' as *;
+
+// テーブル横スクロール
+
+.scroll {
+  @include sumaho {
+    overflow: auto;
+    table {
+      white-space: nowrap;
+    }
+  }
+}

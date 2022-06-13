@@ -1,0 +1,143 @@
+// グリッド生成
+
+@use 'sass:map';
+@use 'sass:math';
+@use 'config';
+@use '../../global/setting/' as var;
+@use '../../global/mixin/' as *;
+// カラム数
+$column: 12;
+
+// 端数処理
+@function digitsFix($num) {
+  $digits: 100000; // 有効桁数(0の数が小数点以下の桁数)
+  @return math.div(math.floor($num * $digits), $digits);
+}
+
+// グリッド生成用設定ファイルに指定されたパターン分作成
+@each $grid in config.$gridList {
+  // コンテンツ幅
+  $contents: map.get($grid, contents);
+
+  // マージン
+  $margin: map.get($grid, margin);
+
+  // 12カラム時の合計カラム幅
+  $columnSum: $contents - $margin * ($column - 1);
+
+  // 12カラム時の1カラム幅
+  $columnWidth: math.div($columnSum, $column);
+
+  // コンテンツ幅に対するマージン割合
+  $marginPercent: math.div($margin, $contents) * 100;
+
+  // ブレークポイント(PC,タブレット,スマホ)
+  $breakPoint: (
+    (
+      device: 'pc',
+      className: '',
+      mediaQuery: 'min-width: #{map.get(var.$breakPoint, tablet)}px',
+    ),
+    (
+      device: 'tablet',
+      className: 's',
+      mediaQuery: 'max-width: #{map.get(var.$breakPoint, tablet)}px',
+    ),
+    (
+      device: 'sumaho',
+      className: 'ss',
+      mediaQuery: 'max-width: #{map.get(var.$breakPoint, sumaho)}px',
+    )
+  );
+
+  // グリッドのクラス名
+  #{map.get($grid, gridName)} {
+    // 1パターンにつきブレークポイント分作成
+    @each $g in $breakPoint {
+      // ブレークポイントに対応するクラス名(なし,s,ss)
+      $className: map.get($g, className);
+
+      // ブレークポイントのメディアクエリ毎に設定
+      @media screen and (map.get($g, mediaQuery)) {
+        & {
+          position: relative;
+          width: 100%;
+        }
+        & .#{$className}g1,
+        & .#{$className}g2,
+        & .#{$className}g3,
+        & .#{$className}g4,
+        & .#{$className}g5,
+        & .#{$className}g6,
+        & .#{$className}g7,
+        & .#{$className}g8,
+        & .#{$className}g9,
+        & .#{$className}g10,
+        & .#{$className}g11,
+        & .#{$className}g12,
+        & .#{$className}d5,
+        & .#{$className}d7 {
+          position: relative;
+          float: left;
+          margin-left: #{digitsFix($marginPercent) + '%'} !important;
+        }
+
+        // .g1～.g12までのカラム設定
+        @for $i from 1 through $column {
+          $widthPercent: math.div((($columnWidth * $i) + ($margin * ($i - 1))), $contents) * 100;
+          & .#{$className}g#{$i} {
+            width: #{digitsFix($widthPercent) + '%'};
+            @if $i == 12 {
+              margin-left: 0 !important;
+            }
+          }
+        }
+
+        // 5分割・7分割のカラム設定
+        & .#{$className}d5 {
+          $widthPercent: math.div(math.div(($contents - ($margin * 4)), 5), $contents) * 100;
+          width: #{digitsFix($widthPercent) + '%'};
+        }
+        & .#{$className}d7 {
+          $widthPercent: math.div(math.div(($contents - ($margin * 6)), 7), $contents) * 100;
+          width: #{digitsFix($widthPercent) + '%'};
+        }
+
+        // .push1～.push11までの位置マージン
+        @for $i from 1 through $column {
+          $widthPercent: math.div((($columnWidth * $i) + ($margin * ($i - 1))), $contents) * 100;
+          @if $i < 12 {
+            & .#{$className}push#{$i} {
+              margin-left: #{digitsFix($widthPercent + $marginPercent) + '%'} !important;
+            }
+          }
+        }
+
+        // クリアフィックス
+        @include clearfix;
+
+        // 下マージン(カラム間のマージンと同じ値)
+        .inner,
+        &.inner {
+          margin-bottom: #{digitsFix($marginPercent) + '%'};
+        }
+
+        // 先頭要素クラス
+        @if map.get($g, device) == 'tablet' {
+          & .fst {
+            clear: none;
+          }
+        }
+        @if map.get($g, device) == 'sumaho' {
+          & .sfst {
+            clear: none;
+          }
+        }
+        & .#{$className}fst {
+          margin-left: 0 !important;
+          clear: left;
+        }
+      }
+    }
+  }
+}

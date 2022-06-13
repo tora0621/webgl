@@ -1,0 +1,8 @@
+//slickプラグイン調整
+
+.slick {
+  //float下の隙間を解消する
+  &-slide > div > * {
+    vertical-align: bottom;
+  }
+}

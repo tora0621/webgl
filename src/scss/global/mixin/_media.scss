@@ -1,0 +1,77 @@
+// メディアクエリ設定用モジュール
+//
+// 参考)
+// https://shizukanajikan.com/pdf/pdf_breakpoint2019.pdf
+//
+// 例)
+// .hoge {
+//   // 数値指定
+//   @include media(1280) {
+//     width: 90%;
+//   }
+//   // スマホ（スマホ縦を想定）
+//   @include sumaho {
+//     position: relative;
+//   }
+//   // タブレット（スマホ横を含む）
+//   @include tablet {
+//     background-color: #f00;
+//   }
+//   // ノートPC（タブレット横を含む）
+//   @include note {
+//     display: block;
+//   }
+// }
+
+@use 'sass:meta';
+@use 'sass:map';
+@use '../setting/var';
+
+// ノートPC（タブレット横を含む）幅にスタイルを適用
+@mixin note {
+  @include media(note) {
+    @content;
+  }
+}
+
+// タブレット（スマホ横を含む）幅にスタイルを適用
+@mixin tablet {
+  @include media(tablet) {
+    @content;
+  }
+}
+
+// スマホ（スマホ縦を想定）幅にスタイルを適用
+@mixin sumaho {
+  @include media(sumaho) {
+    @content;
+  }
+}
+
+// ビューポートが縦長の場合にスタイルを適用
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+// ビューポートが横長の場合にスタイルを適用
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+// メディアクエリで適用する幅を指定
+@mixin media($bp: null) {
+  @if (meta.type-of($bp) != number) {
+    $bp: map.get(var.$breakPoint, $bp);
+  }
+  @if ($bp != null or meta.type-of($bp) == number) {
+    @media screen and (max-width: '#{$bp}px') {
+      @content;
+    }
+  } @else {
+    @error "メディアクエリに適用させるデバイス又は整数を指定してください。";
+  }
+}
