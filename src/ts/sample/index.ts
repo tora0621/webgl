@@ -15,34 +15,20 @@ import { setMatchHeight } from '../common/setMatchHeight';
 import { setGrid } from '../common/setGrid';
 import { setPopup } from './setPopup';
 import { Base64 } from 'js-base64';
+import { sampleThree } from '../modules/sampleThree';
 
 export function test(): void {
-  console.log('isSumaho実行結果:' + isSumaho());
-  console.log('isTablet実行結果:' + isTablet());
-  console.log('ルートからの相対パス:' + getRelPath());
-  reservation();
-  setGrid();
-  setPopup();
-  setResponsiveImg();
-  setResponsiveImgMaps();
-  setSlider();
-  setMatchHeight();
-  setSmoothScroll();
-  base64_test();
-}
-
-/**
- * Base64のテスト
- */
-function base64_test(): void {
-  // エンコードボタン
-  $('#encode').on('click', () => {
-    let data: string = <string>$('#decode_result').val();
-    $('#encode_result').val(Base64.encode(data));
-  });
-  // デコードボタン
-  $('#decode').on('click', () => {
-    let data: string = <string>$('#encode_result').val();
-    $('#decode_result').val(Base64.decode(data));
-  });
+  // console.log('isSumaho実行結果:' + isSumaho());
+  // console.log('isTablet実行結果:' + isTablet());
+  // console.log('ルートからの相対パス:' + getRelPath());
+  // reservation();
+  // setGrid();
+  // setPopup();
+  // setResponsiveImg();
+  // setResponsiveImgMaps();
+  // setSlider();
+  // setMatchHeight();
+  // setSmoothScroll();
+  // base64_test();
+  sampleThree();
 }
