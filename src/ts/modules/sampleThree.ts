@@ -4,9 +4,11 @@ export const sampleThree = () => {
   // ------------------------------------------------
   // 絶対入れる部分
   // ------------------------------------------------
+  const target = $('.js-sample-three');
+  if (!target.length) return;
 
   // シーンを作成
-  var scene = new THREE.Scene();
+  const scene = new THREE.Scene();
 
   console.log(THREE);
   console.log(scene);
