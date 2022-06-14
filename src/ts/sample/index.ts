@@ -16,6 +16,7 @@ import { setGrid } from '../common/setGrid';
 import { setPopup } from './setPopup';
 import { Base64 } from 'js-base64';
 import { sampleThree } from '../modules/sampleThree';
+import { buildingAnim } from '../modules/buildingAnim';
 
 export function test(): void {
   // console.log('isSumaho実行結果:' + isSumaho());
@@ -31,4 +32,5 @@ export function test(): void {
   // setSmoothScroll();
   // base64_test();
   sampleThree();
+  buildingAnim();
 }
