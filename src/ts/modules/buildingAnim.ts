@@ -39,8 +39,6 @@ export const buildingAnim = () => {
     context.lineWidth = 1;
 
     context.strokeStyle = 'white';
-    // context.moveTo(0, stageH / 2); // 開始点
-    // context.lineTo(stageW, stageH / 2); // 終了点
 
     const segmentNum = 100;
     const amplitude = stageH / 2;
@@ -48,11 +46,8 @@ export const buildingAnim = () => {
 
     const lineNum = 100;
 
-    // console.log(Math.round((2 / lineNum) * 360));
-
     context.beginPath();
     for (let j = 0; j < lineNum; j++) {
-      const coefficient = 50 + j;
       const h = Math.round((j / lineNum) * 360);
       const s = 100;
       const l = Math.round((j / lineNum) * 100);
