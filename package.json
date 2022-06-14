@@ -42,6 +42,7 @@
     "jquery": "^3.6.0",
     "jquery-match-height": "^0.7.2",
     "js-base64": "^3.7.2",
+    "simplenoise": "^1.0.1",
     "slick-carousel": "^1.8.1",
     "sugar": "^2.0.6",
     "three": "^0.141.0",
