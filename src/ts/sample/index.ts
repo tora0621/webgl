@@ -17,6 +17,7 @@ import { setPopup } from './setPopup';
 import { Base64 } from 'js-base64';
 import { sampleThree } from '../modules/sampleThree';
 import { buildingAnim } from '../modules/buildingAnim';
+import { particleAnim } from '../modules/particleAnim';
 
 export function test(): void {
   // console.log('isSumaho実行結果:' + isSumaho());
@@ -33,4 +34,5 @@ export function test(): void {
   // base64_test();
   sampleThree();
   buildingAnim();
+  particleAnim();
 }
