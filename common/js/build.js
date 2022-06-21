@@ -158,98 +158,179 @@ var particleAnim = function particleAnim() {
   if (!target.length) return;
   var width = window.innerWidth;
   var height = window.innerHeight;
+  var scene = new three__WEBPACK_IMPORTED_MODULE_3__.Scene(); //視野角とアスペクト比
 
-  var init = function init() {
-    var scene = new three__WEBPACK_IMPORTED_MODULE_3__.Scene(); //視野角とアスペクト比
+  var camera = new three__WEBPACK_IMPORTED_MODULE_3__.PerspectiveCamera(45, width / height);
+  camera.position.set(0, 0, 1000);
+  var canvasElement = document.querySelector('canvas');
+  var renderer = new three__WEBPACK_IMPORTED_MODULE_3__.WebGL1Renderer({
+    canvas: canvasElement
+  });
+  renderer.setSize(width, height);
+  var light = new three__WEBPACK_IMPORTED_MODULE_3__.DirectionalLight(0xffffff, 1);
+  light.position.set(0, 0, 1000);
+  scene.add(light); //レンダー関数
 
-    var camera = new three__WEBPACK_IMPORTED_MODULE_3__.PerspectiveCamera(45, width / height);
-    camera.position.set(0, 0, 1000);
-    var canvasElement = document.querySelector('canvas');
-    var renderer = new three__WEBPACK_IMPORTED_MODULE_3__.WebGL1Renderer({
-      canvas: canvasElement
-    });
-    renderer.setSize(width, height);
-    var light = new three__WEBPACK_IMPORTED_MODULE_3__.DirectionalLight(0xffffff, 1);
-    light.position.set(0, 0, 1000);
-    scene.add(light); //レンダー関数
-
-    var start = function start() {
-      renderer.render(scene, camera);
-    };
-
-    var length = 600;
-    var plane_scale = 6;
-    var plane = [];
-
-    for (var i = 0; i < length; i++) {
-      var _geometry = new three__WEBPACK_IMPORTED_MODULE_3__.PlaneGeometry(plane_scale, plane_scale);
-
-      var rect = [];
-
-      var _material = void 0;
-
-      for (var ci = 0; ci < length; ci++) {
-        var color = '0x' + Math.floor(Math.random() * 16777215).toString(16);
-        _material = new three__WEBPACK_IMPORTED_MODULE_3__.MeshBasicMaterial({
-          color: Number(color),
-          opacity: 0.8,
-          transparent: true,
-          side: three__WEBPACK_IMPORTED_MODULE_3__.DoubleSide
-        });
-        rect.push(new three__WEBPACK_IMPORTED_MODULE_3__.Mesh(_geometry, _material));
-      }
-
-      plane[i] = new three__WEBPACK_IMPORTED_MODULE_3__.Mesh(_geometry, _material);
-      plane[i].position.x = width * (Math.random() - 0.5);
-      plane[i].position.y = height * (Math.random() - 0.5);
-      plane[i].position.z = width * (Math.random() - 0.5);
-      scene.add(plane[i]);
-    }
-
-    var geometry = new three__WEBPACK_IMPORTED_MODULE_3__.PlaneGeometry(plane_scale, plane_scale);
-    var material = new three__WEBPACK_IMPORTED_MODULE_3__.MeshBasicMaterial({
-      color: '0xffffff',
-      side: three__WEBPACK_IMPORTED_MODULE_3__.DoubleSide
-    });
-
-    for (var _i = 0; _i < length; _i++) {
-      plane[_i] = new three__WEBPACK_IMPORTED_MODULE_3__.Mesh(geometry, material);
-      plane[_i].position.x = width * (Math.random() - 0.5);
-      plane[_i].position.y = width * (Math.random() - 0.5);
-      plane[_i].position.z = width * (Math.random() - 0.5);
-      scene.add(plane[_i]);
-    }
-
-    var random = function random(min, max) {
-      var rand = Math.floor(min + (max - min + 1) * Math.random());
-      return rand;
-    }; //ちらつかせていく
-
-
-    var rot = 0;
-
-    var tick = function tick() {
-      rot += 0.2;
-      var radion = rot * Math.PI / 180;
-      camera.position.x = 1000 * Math.sin(radion);
-      camera.position.z = 1000 * Math.cos(radion);
-      camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_3__.Vector3(0, 0, 0));
-
-      for (var _i2 = 0; _i2 < length; _i2++) {
-        plane[_i2].rotation.x += Math.random() * 0.1;
-        plane[_i2].rotation.y += Math.random() * 0.1;
-        plane[_i2].rotation.z += Math.random() * 0.1;
-      }
-
-      renderer.render(scene, camera);
-      requestAnimationFrame(tick);
-    };
-
-    tick();
-    start();
+  var start = function start() {
+    renderer.render(scene, camera);
   };
 
-  init();
+  var length = 600;
+  var plane_scale = 6;
+  var plane = [];
+
+  for (var i = 0; i < length; i++) {
+    var _geometry = new three__WEBPACK_IMPORTED_MODULE_3__.PlaneGeometry(plane_scale, plane_scale);
+
+    var rect = [];
+
+    var _material = void 0;
+
+    for (var ci = 0; ci < length; ci++) {
+      var color = '0x' + Math.floor(Math.random() * 16777215).toString(16);
+      _material = new three__WEBPACK_IMPORTED_MODULE_3__.MeshBasicMaterial({
+        color: Number(color),
+        opacity: 0.8,
+        transparent: true,
+        side: three__WEBPACK_IMPORTED_MODULE_3__.DoubleSide
+      });
+      rect.push(new three__WEBPACK_IMPORTED_MODULE_3__.Mesh(_geometry, _material));
+    }
+
+    plane[i] = new three__WEBPACK_IMPORTED_MODULE_3__.Mesh(_geometry, _material);
+    plane[i].position.x = width * (Math.random() - 0.5);
+    plane[i].position.y = height * (Math.random() - 0.5);
+    plane[i].position.z = width * (Math.random() - 0.5);
+    scene.add(plane[i]);
+  }
+
+  var geometry = new three__WEBPACK_IMPORTED_MODULE_3__.PlaneGeometry(plane_scale, plane_scale);
+  var material = new three__WEBPACK_IMPORTED_MODULE_3__.MeshBasicMaterial({
+    color: '0xffffff',
+    side: three__WEBPACK_IMPORTED_MODULE_3__.DoubleSide
+  });
+
+  for (var _i = 0; _i < length; _i++) {
+    plane[_i] = new three__WEBPACK_IMPORTED_MODULE_3__.Mesh(geometry, material);
+    plane[_i].position.x = width * (Math.random() - 0.5);
+    plane[_i].position.y = width * (Math.random() - 0.5);
+    plane[_i].position.z = width * (Math.random() - 0.5);
+    scene.add(plane[_i]);
+  }
+
+  var random = function random(min, max) {
+    var rand = Math.floor(min + (max - min + 1) * Math.random());
+    return rand;
+  }; //ちらつかせていく
+
+
+  var rot = 0;
+
+  var tick = function tick() {
+    rot += 0.2;
+    var radion = rot * Math.PI / 180;
+    camera.position.x = 1000 * Math.sin(radion);
+    camera.position.z = 1000 * Math.cos(radion);
+    camera.lookAt(new three__WEBPACK_IMPORTED_MODULE_3__.Vector3(0, 0, 0));
+
+    for (var _i2 = 0; _i2 < length; _i2++) {
+      plane[_i2].rotation.x += Math.random() * 0.1;
+      plane[_i2].rotation.y += Math.random() * 0.1;
+      plane[_i2].rotation.z += Math.random() * 0.1;
+    }
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  };
+
+  tick();
+  start();
+};
+
+/***/ }),
+
+/***/ "./src/ts/modules/rainAnim.ts":
+/*!************************************!*\
+  !*** ./src/ts/modules/rainAnim.ts ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "rainAnim": function() { return /* binding */ rainAnim; }
+/* harmony export */ });
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+var rainAnim = function rainAnim() {
+  var target = $('.js-canvas-rain');
+  if (!target.length) return;
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene();
+  scene.rotation.x = Math.PI;
+  var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height);
+  camera.position.set(0, -500, 1000);
+  var canvasElement = document.querySelector('canvas');
+  var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGL1Renderer({
+    canvas: canvasElement,
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(width, height);
+  var light = new three__WEBPACK_IMPORTED_MODULE_0__.AmbientLight(0xffffff, 1.0);
+  light.position.set(0, 0, 0);
+  scene.add(light);
+  var x_size = window.innerWidth;
+  var y_size = window.innerHeight;
+  var length = 600;
+  var plane_scale = 0.5;
+  var plane_scale02 = 10;
+  var plane = [];
+
+  for (var i = 0; i < length; i++) {
+    var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.PlaneGeometry(plane_scale, plane_scale02);
+    var material = new three__WEBPACK_IMPORTED_MODULE_0__.MeshBasicMaterial({
+      color: '0xafafb0',
+      opacity: 0.4,
+      transparent: true,
+      side: three__WEBPACK_IMPORTED_MODULE_0__.DoubleSide
+    });
+    plane[i] = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(geometry, material);
+    plane[i].position.x = x_size * (Math.random() - 0.5);
+    plane[i].position.y = y_size * (Math.random() - 0.5);
+    plane[i].position.z = x_size * (Math.random() - 0.5);
+    scene.add(plane[i]);
+  }
+
+  var random = function random(min, max) {
+    var rand = Math.floor(min + (max - min + 1) * Math.random());
+    return rand;
+  };
+
+  var tick = function tick() {
+    for (var _i = 0; _i < length; _i++) {
+      plane[_i].position.x += random(-5, 5) * 0;
+      plane[_i].position.y += 5.5;
+
+      if (plane[_i].position.y > height) {
+        plane[_i].position.x = x_size * (Math.random() - 0.5);
+        plane[_i].position.y = 0;
+      }
+    }
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }; //アニメ―ション
+
+
+  var start = function start() {
+    renderer.render(scene, camera);
+  };
+
+  tick();
+  start();
 };
 
 /***/ }),
@@ -329,10 +410,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_sampleThree__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/sampleThree */ "./src/ts/modules/sampleThree.ts");
 /* harmony import */ var _modules_buildingAnim__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/buildingAnim */ "./src/ts/modules/buildingAnim.ts");
 /* harmony import */ var _modules_particleAnim__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/particleAnim */ "./src/ts/modules/particleAnim.ts");
+/* harmony import */ var _modules_rainAnim__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modules/rainAnim */ "./src/ts/modules/rainAnim.ts");
 /**
  * モジュールのテスト用
  * ※ベースコーディング時にindex.tsからの読み込みと合わせて削除してください。
  */
+
 
 
 
@@ -352,6 +435,7 @@ function test() {
   (0,_modules_sampleThree__WEBPACK_IMPORTED_MODULE_0__.sampleThree)();
   (0,_modules_buildingAnim__WEBPACK_IMPORTED_MODULE_1__.buildingAnim)();
   (0,_modules_particleAnim__WEBPACK_IMPORTED_MODULE_2__.particleAnim)();
+  (0,_modules_rainAnim__WEBPACK_IMPORTED_MODULE_3__.rainAnim)();
 }
 
 /***/ }),

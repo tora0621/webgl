@@ -18,6 +18,7 @@ import { Base64 } from 'js-base64';
 import { sampleThree } from '../modules/sampleThree';
 import { buildingAnim } from '../modules/buildingAnim';
 import { particleAnim } from '../modules/particleAnim';
+import { rainAnim } from '../modules/rainAnim';
 
 export function test(): void {
   // console.log('isSumaho実行結果:' + isSumaho());
@@ -35,4 +36,5 @@ export function test(): void {
   sampleThree();
   buildingAnim();
   particleAnim();
+  rainAnim();
 }
