@@ -19,6 +19,7 @@ import { sampleThree } from '../modules/sampleThree';
 import { buildingAnim } from '../modules/buildingAnim';
 import { particleAnim } from '../modules/particleAnim';
 import { rainAnim } from '../modules/rainAnim';
+import { circleAnim } from '../modules/circleAnim';
 
 export function test(): void {
   // console.log('isSumaho実行結果:' + isSumaho());
@@ -37,4 +38,5 @@ export function test(): void {
   buildingAnim();
   particleAnim();
   rainAnim();
+  circleAnim();
 }

@@ -36,7 +36,7 @@ export const rainAnim = () => {
     let geometry = new THREE.PlaneGeometry(plane_scale, plane_scale02);
     var material = new THREE.MeshBasicMaterial({
       color: '0xafafb0',
-      opacity: 0.4,
+      opacity: 0.8,
       transparent: true,
       side: THREE.DoubleSide,
     });
