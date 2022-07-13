@@ -129,6 +129,116 @@ var buildingAnim = function buildingAnim() {
 
 /***/ }),
 
+/***/ "./src/ts/modules/circleAnim.ts":
+/*!**************************************!*\
+  !*** ./src/ts/modules/circleAnim.ts ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "circleAnim": function() { return /* binding */ circleAnim; }
+/* harmony export */ });
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "./node_modules/three/build/three.module.js");
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+var circleAnim = function circleAnim() {
+  var target = $('.js-canvas-circle');
+  if (!target.length) return;
+  console.log('circle start');
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+
+  var init = function init() {
+    // シーンを作る
+    var scene = new three__WEBPACK_IMPORTED_MODULE_0__.Scene(); // カメラを作る
+
+    var camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(45, width / height);
+    camera.position.set(0, 100, 1000); // レンダラーを作る
+
+    var canvasElement = document.querySelector('canvas');
+    var renderer = new three__WEBPACK_IMPORTED_MODULE_0__.WebGLRenderer({
+      canvas: canvasElement,
+      antialias: true,
+      alpha: true
+    });
+    renderer.setSize(width, height); // ライトを作る
+
+    var light = new three__WEBPACK_IMPORTED_MODULE_0__.AmbientLight(0xffffff, 1.0);
+    console.log('test');
+    light.position.set(0, 0, 0);
+    scene.add(light);
+    var x_size = window.innerWidth;
+    var y_size = window.innerHeight;
+    var length = 800;
+    var plane_scale = 4;
+    var plane = [];
+
+    for (var i = 0; i < length; i++) {
+      var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.SphereGeometry(plane_scale, plane_scale, plane_scale);
+      var material = new three__WEBPACK_IMPORTED_MODULE_0__.MeshBasicMaterial({
+        color: '0xcccccc',
+        opacity: 0.4,
+        transparent: true
+      });
+      plane[i] = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(geometry, material);
+      plane[i].position.x = x_size * (Math.random() - 0.5);
+      plane[i].position.y = y_size * (Math.random() - 0.5);
+      plane[i].position.z = x_size * (Math.random() - 0.5);
+      scene.add(plane[i]);
+    }
+
+    function random(min, max) {
+      var rand = Math.floor(min + (max - min + 1) * Math.random());
+      return rand;
+    }
+
+    var tick = function tick() {
+      for (var _i = 0; _i < length; _i++) {
+        plane[_i].position.x += random(-5, 5) * 0.1;
+        plane[_i].position.y += 2.5;
+        plane[_i].position.z += random(-5, 5) * 0.1;
+
+        if (plane[_i].position.y > height) {
+          plane[_i].position.x = x_size * (Math.random() - 0.5);
+          plane[_i].position.y = 0;
+          plane[_i].position.z = x_size * (Math.random() - 0.5);
+        }
+      }
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+    }; //リサイズ時にcanvas幅を再計算
+
+
+    onResize();
+    window.addEventListener('resize', onResize);
+
+    function onResize() {
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    }
+
+    tick();
+
+    var start = function start() {
+      renderer.render(scene, camera);
+    };
+
+    start();
+  }; // ページの読み込みを待つ
+
+
+  window.addEventListener('load', init);
+};
+
+/***/ }),
+
 /***/ "./src/ts/modules/particleAnim.ts":
 /*!****************************************!*\
   !*** ./src/ts/modules/particleAnim.ts ***!
@@ -293,7 +403,7 @@ var rainAnim = function rainAnim() {
     var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.PlaneGeometry(plane_scale, plane_scale02);
     var material = new three__WEBPACK_IMPORTED_MODULE_0__.MeshBasicMaterial({
       color: '0xafafb0',
-      opacity: 0.4,
+      opacity: 0.8,
       transparent: true,
       side: three__WEBPACK_IMPORTED_MODULE_0__.DoubleSide
     });
@@ -411,10 +521,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_buildingAnim__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/buildingAnim */ "./src/ts/modules/buildingAnim.ts");
 /* harmony import */ var _modules_particleAnim__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/particleAnim */ "./src/ts/modules/particleAnim.ts");
 /* harmony import */ var _modules_rainAnim__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modules/rainAnim */ "./src/ts/modules/rainAnim.ts");
+/* harmony import */ var _modules_circleAnim__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../modules/circleAnim */ "./src/ts/modules/circleAnim.ts");
 /**
  * モジュールのテスト用
  * ※ベースコーディング時にindex.tsからの読み込みと合わせて削除してください。
  */
+
 
 
 
@@ -436,6 +548,7 @@ function test() {
   (0,_modules_buildingAnim__WEBPACK_IMPORTED_MODULE_1__.buildingAnim)();
   (0,_modules_particleAnim__WEBPACK_IMPORTED_MODULE_2__.particleAnim)();
   (0,_modules_rainAnim__WEBPACK_IMPORTED_MODULE_3__.rainAnim)();
+  (0,_modules_circleAnim__WEBPACK_IMPORTED_MODULE_4__.circleAnim)();
 }
 
 /***/ }),
