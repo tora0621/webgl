@@ -42,7 +42,7 @@ export const circleAnim = () => {
       let geometry = new THREE.SphereGeometry(plane_scale, plane_scale, plane_scale);
       var material = new THREE.MeshBasicMaterial({
         color: '0xcccccc',
-        opacity: 0.4,
+        opacity: 0.1,
         transparent: true,
       });
 

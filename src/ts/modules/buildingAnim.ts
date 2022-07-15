@@ -15,8 +15,6 @@ export const buildingAnim = () => {
 
   noise.seed(Math.random());
 
-  console.log(context);
-
   // リサイズ
   const resize = () => {
     stageW = innerWidth * devicePixelRatio;
@@ -36,15 +34,20 @@ export const buildingAnim = () => {
   const draw = () => {
     // 画面をリセット
     context.clearRect(0, 0, stageW, stageH);
-    context.lineWidth = 1;
+    context.lineWidth = 3;
 
     context.strokeStyle = 'white';
+    // context.fillStyle = 'white';
 
-    const segmentNum = 100;
+    const ctx = canvas.getContext('2d')!;
+    ctx.strokeStyle = 'rgba(255, 0, 0, 0.1)';
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.)';
+
+    const segmentNum = 3;
     const amplitude = stageH / 2;
     const time = Date.now() / 4000;
 
-    const lineNum = 100;
+    const lineNum = 3;
 
     context.beginPath();
     for (let j = 0; j < lineNum; j++) {
@@ -55,8 +58,8 @@ export const buildingAnim = () => {
       context.strokeStyle = `hsl(${h}, ${s}%, ${l}%)`;
       for (let i = 0; i < segmentNum; i++) {
         const x = (i / (segmentNum - 1)) * stageW;
-        const px = i / (50 + j); // 横軸の入力値
-        const py = j / 50 + time; // 時間の入力値
+        const px = i / (100 + j); // 横軸の入力値
+        const py = j / 100 + time; // 時間の入力値
         const y = amplitude * noise.perlin2(px, py) + stageH / 2;
 
         if (i === 0) {

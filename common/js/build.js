@@ -68,8 +68,7 @@ var buildingAnim = function buildingAnim() {
   var canvas = document.querySelector('canvas'); // 2Dの描画命令群を取得
 
   var context = canvas.getContext('2d');
-  noise.seed(Math.random());
-  console.log(context); // リサイズ
+  noise.seed(Math.random()); // リサイズ
 
   var resize = function resize() {
     stageW = innerWidth * devicePixelRatio;
@@ -88,12 +87,16 @@ var buildingAnim = function buildingAnim() {
   var draw = function draw() {
     // 画面をリセット
     context.clearRect(0, 0, stageW, stageH);
-    context.lineWidth = 1;
-    context.strokeStyle = 'white';
-    var segmentNum = 100;
+    context.lineWidth = 3;
+    context.strokeStyle = 'white'; // context.fillStyle = 'white';
+
+    var ctx = canvas.getContext('2d');
+    ctx.strokeStyle = 'rgba(255, 0, 0, 0.1)';
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.)';
+    var segmentNum = 3;
     var amplitude = stageH / 2;
     var time = Date.now() / 4000;
-    var lineNum = 100;
+    var lineNum = 3;
     context.beginPath();
 
     for (var j = 0; j < lineNum; j++) {
@@ -105,9 +108,9 @@ var buildingAnim = function buildingAnim() {
 
       for (var i = 0; i < segmentNum; i++) {
         var x = i / (segmentNum - 1) * stageW;
-        var px = i / (50 + j); // 横軸の入力値
+        var px = i / (100 + j); // 横軸の入力値
 
-        var py = j / 50 + time; // 時間の入力値
+        var py = j / 100 + time; // 時間の入力値
 
         var y = amplitude * noise.perlin2(px, py) + stageH / 2;
 
@@ -179,7 +182,7 @@ var circleAnim = function circleAnim() {
       var geometry = new three__WEBPACK_IMPORTED_MODULE_0__.SphereGeometry(plane_scale, plane_scale, plane_scale);
       var material = new three__WEBPACK_IMPORTED_MODULE_0__.MeshBasicMaterial({
         color: '0xcccccc',
-        opacity: 0.4,
+        opacity: 0.1,
         transparent: true
       });
       plane[i] = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(geometry, material);

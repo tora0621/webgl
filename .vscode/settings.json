@@ -8,14 +8,14 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "regreplace.on-save": true,
-  "regreplace.commands": [
-    {
-      "name": "Delete self-closing tag",
-      "match": "\\.html?$",
-      "regexp": " />",
-      "replace": ">"
-    }
-  ],
+  // "regreplace.commands": [
+  //   {
+  //     "name": "Delete self-closing tag",
+  //     "match": "\\.html?$",
+  //     "regexp": " />",
+  //     "replace": ">"
+  //   }
+  // ],
   "files.associations": {
     ".prettierrc": "json",
     ".htmlhintrc": "json"
